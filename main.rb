@@ -1,21 +1,3 @@
-# def bubble_sort(arr)
-#   loop do
-#     swapped = false
-#     (arr.length - 1).times do |i|
-#       if arr[i] > arr[i + 1]
-#         arr[i], arr[i + 1] = arr[i + 1], arr[i] 
-#         swapped = true
-#       end
-#     end
-#     break unless swapped
-#   end
-#   arr
-# end
-
-
-
-#               0,2
-
 def bubble_sort (array)
   loop do
     swapped = false
@@ -30,5 +12,25 @@ def bubble_sort (array)
   array
 end
 
-puts bubble_sort ([1,6,4,3,6,9])
+def swap(array, i)
+  array[i], array[i+1] = array[i+1], array[i]
+  true
+end
+
+
+def bubble_sort_by(array)
+  loop do
+    swapped = false
+    (array.length - 1).times do |i|
+      swapped = swap(array, i) if yield(array[i], array[i+1]) > 0
+    end
+    break if swapped == false
+  end
+  array
+end
+
+# puts bubble_sort ([1,6,4,3,6,9])
+
+puts bubble_sort_by ([1,6,4,3,6,9]) {|left, right| left <=> right}
+
 
