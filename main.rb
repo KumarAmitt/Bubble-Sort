@@ -23,7 +23,7 @@ def bubble_sort_by(array)
   loop do
     swapped = false
     (array.length - 1).times do |i|
-      swapped = swap(array, i) if yield(array[i], array[i+1]).positive?
+      swapped = swap(array, i) if yield(array[i], array[i + 1]).positive?
     end
     break if swapped == false
   end
@@ -31,11 +31,11 @@ def bubble_sort_by(array)
 end
 
 # For bubble_sort
-puts bubble_sort ([1, 6, 4, 3, 6, 9])
+puts bubble_sort([1, 6, 4, 3, 6, 9])
 
 puts '-------------'
 
 # For bubble_sort_by
-puts bubble_sort_by ([1, 6, 4, 3, 6, 9]) {|left, right| left <=> right}
+puts bubble_sort_by([1, 6, 4, 3, 6, 9]) { |left, right| left <=> right }
 
-puts bubble_sort_by(['hi', 'hello', 'hey']) { |left, right| left.length <=> right.length }
+puts bubble_sort_by(%w[hi hello hey]) { |left, right| left.length <=> right.length }
